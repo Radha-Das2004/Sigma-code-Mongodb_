@@ -1,0 +1,239 @@
+/* 📌 ग्लोबल स्टाइल्स */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    /* वॉट्सऐप का ओरिजिनल बैकग्राउंड लाइट-ग्रे शेड */
+    background-color: #f0f2f5;
+    background-image: linear-gradient(rgba(240, 242, 245, 0.4), rgba(240, 242, 245, 0.4)), 
+                url('https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=1000');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 15px;
+}
+
+/* 📱 मुख्य ऐप ढांचा (Layout Container) */
+.whatsapp-layout {
+    width: 100%;
+    max-width: 550px;
+    height: 85vh;
+    background-color: #efeae2; /* असली वॉट्सऐप चैट वॉलपेपर का रंग */
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* 🟢 टॉप नेविगेशन बार (Top Bar) */
+.app-top-bar {
+    background-color: #008069; /* प्रॉपर वॉट्सऐप ग्रीन */
+    color: white;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.app-logo {
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.app-title-info h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.status-online {
+    font-size: 0.75rem;
+    color: #25D366;
+    display: block;
+    font-weight: 500;
+}
+
+/* ➕ न्यू चैट बटन */
+.btn-new-chat {
+    background-color: #00a884;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: background-color 0.2s;
+}
+
+.btn-new-chat:hover {
+    background-color: #008f72;
+}
+
+/* 💬 चैट्स व्यूपोर्ट (Scroll Area) */
+.chats-viewport {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* 👤 चैट रो (Row Wrapper) */
+.chat-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    max-width: 85%;
+}
+
+/* अवतार गोला */
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    background-color: #6bcbef;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* ✉️ चैट बबल कार्ड */
+.chat-bubble-card {
+    background-color: #ffffff;
+    padding: 10px 14px;
+    border-radius: 0px 12px 12px 12px; /* ऊपर बाएँ तरफ से नुकीला */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+}
+
+/* यूज़र्स हेडर (From -> To) */
+.chat-members {
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+}
+
+.sender-name {
+    color: #128c7e;
+}
+
+.receiver-name {
+    color: #657786;
+}
+
+.direction-arrow {
+    color: #b9c5cc;
+    font-size: 0.7rem;
+}
+
+/* मैसेज बॉडी */
+.chat-message-content {
+    color: #111b21;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+/* 🕒 फूटर एरिया (टाइम और एक्शन्स) */
+.chat-bubble-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-top: 2px;
+    padding-top: 4px;
+    border-top: 1px solid #f0f2f5;
+}
+
+/* टाइमस्टैम्प */
+.timestamp-box {
+    font-size: 0.72rem;
+    color: #667781;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.edited-tag {
+    background-color: #e1f5fe;
+    color: #0288d1;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.65rem;
+}
+
+/* एक्शन मेनू लिंक्स */
+.action-menu {
+    display: flex;
+    gap: 10px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.edit-btn {
+    color: #0288d1;
+}
+
+.edit-btn:hover {
+    background-color: rgba(2, 136, 209, 0.08);
+}
+
+.delete-btn {
+    color: #d32f2f;
+}
+
+.delete-btn:hover {
+    background-color: rgba(211, 47, 47, 0.08);
+}
+
+/* 📜 सुंदर कस्टम स्क्रॉल बार */
+.chats-viewport::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chats-viewport::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}

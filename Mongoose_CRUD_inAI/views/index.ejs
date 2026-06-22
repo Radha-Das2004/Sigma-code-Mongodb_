@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Whatsapp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="whatsapp-layout">
+        
+        <header class="app-top-bar">
+            <div class="left-section">
+                <div class="app-logo">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.455L0 24zm6.59-4.846c1.642.974 3.254 1.486 4.84 1.487 5.424 0 9.835-4.403 9.838-9.825.002-2.628-1.02-5.1-2.88-6.961C16.526 1.993 14.06 1.97 11.482 1.97c-5.424 0-9.835 4.403-9.838 9.825-.001 1.702.464 3.367 1.346 4.862l-.993 3.626 3.712-.973z"/></svg>
+                </div>
+                <div class="app-title-info">
+                    <h3>Mini WhatsApp</h3>
+                    <span class="status-online">Online</span>
+                </div>
+            </div>
+            <div class="right-section">
+                <form method="get" action="/chats/new">
+                    <button class="btn-new-chat">
+                        <span class="plus-icon">+</span> New Chat
+                    </button>
+                </form>
+            </div>
+        </header>
+
+        <main class="chats-viewport">
+            <% for(let chat of chats){ %>
+                <div class="chat-wrapper">
+                    
+                    <div class="user-avatar">
+                        <%= chat.from.substring(0, 1).toUpperCase() %>
+                    </div>
+
+                    <div class="chat-bubble-card">
+                        
+                        <div class="chat-members">
+                            <span class="sender-name"><%= chat.from %></span>
+                            <span class="direction-arrow">➔</span>
+                            <span class="receiver-name"><%= chat.to %></span>
+                        </div>
+                        
+                        <div class="chat-message-content">
+                            <p class="text-data"><%= chat.msg %></p>
+                        </div>
+                        
+                        <div class="chat-bubble-footer">
+                            
+                            <div class="timestamp-box">
+                                <% if (chat.updated_at) { %>
+                                    <span class="time"><%= chat.updated_at.toString().split(" ")[4].substring(0, 5) %></span>
+                                    <span class="date"><%= chat.updated_at.toString().split(" ").splice(0, 3).join(" ") %></span>
+                                    <span class="edited-tag">Edited</span>
+                                <% } else { %>
+                                    <span class="time"><%= chat.created_at.toString().split(" ")[4].substring(0, 5) %></span>
+                                    <span class="date"><%= chat.created_at.toString().split(" ").splice(0, 3).join(" ") %></span>
+                                <% } %>
+                            </div>
+
+                            <div class="action-menu">
+                                <form method="GET" action="/chats/<%= chat._id %>/edit">
+                                    <button class="icon-btn edit-btn" title="Edit Message">
+                                        edit
+                                    </button>
+                                </form>
+                                <form method="POST" action="/chats/<%= chat._id %>?_method=DELETE" onsubmit="return confirm('Do you really want to delete this chat?');">
+                                    <button class="icon-btn delete-btn" title="Delete Message">
+                                        delete
+                                    </button>
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            <% } %> </main>
+
+    </div>
+</body>
+</html>

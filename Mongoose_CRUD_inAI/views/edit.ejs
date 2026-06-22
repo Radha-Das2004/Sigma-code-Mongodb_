@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Document</title>
+    <link rel="stylesheet" href="/style.css"> 
+</head>
+<body>
+    <div class="whatsapp-layout">
+        
+        <header class="app-top-bar">
+            <div class="left-section">
+                <div class="app-title-info">
+                    <h3>Edit Message</h3>
+                    <span class="status-online" style="color: #cbd5e1; font-size: 0.75rem;">Chat ID: <%= chat.id.substring(0, 8) %>...</span>
+                </div>
+            </div>
+        </header>
+
+        <div style="padding: 20px; display: flex; flex-direction: column; gap: 15px; flex: 1;">
+            
+            <div style="background-color: #ffffff; padding: 12px 14px; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); border-left: 4px solid #128c7e;">
+                <p style="color: #657786; font-size: 0.85rem; font-weight: 500;">
+                    This chat was sent from <b class="sender-name"><%= chat.from %></b> to <b class="receiver-name"><%= chat.to %></b>
+                </p>
+            </div>
+
+            <form method="POST" action="/chats/<%= chat._id %>?_method=PUT" style="display: flex; flex-direction: column; gap: 15px; background: #ffffff; padding: 16px; border-radius: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.1);">
+                
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                    <label style="font-size: 0.85rem; font-weight: 600; color: #111b21;">Update Message Content:</label>
+                    <textarea name="msg" rows="5" id="msg-input" placeholder="Type your message here..." style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #e1f5fe; font-size: 0.92rem; resize: none; outline: none; font-family: inherit; line-height: 1.4; color: #111b21;"><%= chat.msg %></textarea>
+                </div>
+                
+                <div style="display: flex; gap: 10px; align-items: center; justify-content: flex-end; margin-top: 5px;">
+                    <a href="/chats" class="icon-btn edit-btn" style="text-decoration: none; padding: 8px 12px; font-weight: 600;">
+                        Cancel
+                    </a>
+                    <button class="btn-new-chat" style="padding: 8px 16px; border-radius: 8px;">
+                        Save Changes
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>
